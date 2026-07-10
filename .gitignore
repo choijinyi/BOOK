@@ -1,0 +1,27 @@
+# 빌드 산출물 (재생성 가능)
+BookTemplate/output/
+bookwriter/_full.txt
+
+# 개인 문서 (저장소에 올리지 않음)
+/*.pdf
+bookwriter/*.pdf
+BookTemplate/*.pdf
+*.hwp
+*.docx
+
+# 의존성
+node_modules/
+.venv/
+venv/
+
+# 파이썬 캐시
+__pycache__/
+*.pyc
+
+# 로컬 설정
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# OS 잡동사니
+Thumbs.db
+.DS_Store
