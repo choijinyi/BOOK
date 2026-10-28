@@ -60,7 +60,7 @@
 
 .cover-kicker {
     position: absolute;
-    top: 9%; left: 28%; right: 28%;
+    top: 7.6%; left: 28%; right: 28%;
     font-family: {{ gg_sans }};
     font-size: {{ '%.1f' % (7.5 * gg_scale) }}pt;
     font-weight: 500;
@@ -73,7 +73,7 @@
 /* 상단 한 줄 부제 (샘플의 "1인기업 창업을 위한 핵심 가이드" 자리) */
 .book-subtitle {
     position: absolute;
-    top: 11.6%; left: 26%; right: 26%;
+    top: 10.4%; left: 26%; right: 26%;
     font-family: {{ gg_sans }};
     font-size: {{ '%.1f' % (10.5 * gg_scale) }}pt;
     font-weight: 400;
@@ -86,11 +86,11 @@
 /* 원 위에 얹히는 굵은 숫자·기호 (샘플의 "1") */
 .gg-badge {
     position: absolute;
-    top: calc(36.5% - {{ '%.1f' % (gg_circle / 2 + 13 * gg_scale) }}mm);
+    top: calc(36.5% - {{ '%.1f' % (gg_circle / 2 + 11.5 * gg_scale) }}mm);
     left: 0; right: 0;
     z-index: 2;
     font-family: {{ gg_sans }};
-    font-size: {{ '%.1f' % (44 * gg_scale) }}pt;
+    font-size: {{ '%.1f' % (40 * gg_scale) }}pt;
     font-weight: 900;
     line-height: 1;
     color: {{ gg_green }};
@@ -171,7 +171,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 18% 4%;
+    padding: 0 5.5% 1.2%;  /* % 는 띠 전체 폭 기준 → 배지 폭의 약 1/4 */
     box-sizing: border-box;
     font-family: {{ gg_sans }};
     font-size: {{ '%.1f' % (9 * gg_scale) }}pt;
