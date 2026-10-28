@@ -57,3 +57,9 @@ BookTemplate/output/<책>_판형_시각.pdf ← 완성
 - **Mermaid CLI** (`mmdc`) — 도식·차트는 이미지 생성 AI가 아니라 Mermaid로 (집필 단계 `<!-- fig: -->` 마커, 결정적·수정 가능).
 
 도식/차트 = Mermaid(집필부), 사진·일러스트·표지 = Higgsfield(편집부)로 구분한다.
+
+## 표지 샘플
+
+표지 작업은 `BookTemplate/images/cover-samples/`의 참고 시안을 먼저 보여주고 사용자가 고르게 하는 데서 시작한다(목록·용도는 그 폴더의 `README.md`).
+- `canva-green-gold/` — Canva "짙은 녹색과 금색 깔끔한 전자책 책표지" 10종. 대표 시안 09(녹색 원 + 금색 월계관)는 `books.py`의 `"cover": {"mode": "green-gold"}`로 이미지 없이 조판되며, 간지·표도 녹색·금색 `green` 테마로 맞춰진다.
+- 다른 샘플은 Higgsfield 프롬프트·참조 이미지 또는 Canva 마감의 기준으로 쓴다. 샘플 속 저자·출판사 이름은 더미이므로 옮기지 않는다.

@@ -1,0 +1,193 @@
+/* === Green & Gold — CSS 디자인 표지 (표지 샘플 09 "짙은 녹색과 금색" 모티프) ===
+   원본: images/cover-samples/canva-green-gold/09_정답은1인기업_녹색금색월계관.jpg
+   style.css / style-pro.css 양쪽에서 {% raw %}{% include %}{% endraw %} 한다.
+   위치는 판형 비율(%)로 잡아 신국판·B5 모두에서 같은 구도가 나온다.
+   books.py cover 키: kicker, badge, blurb, laurels(최대 3), publisher */
+{% set gg_green = '#283212' %}
+{% set gg_paper = '#e9ebe7' %}
+{% set gg_gold  = '#f2b705' %}
+{% set gg_mint  = '#b9d3c9' %}
+{% set gg_scale = page_width / 152 %}
+{% set gg_circle = page_width * 0.52 %}
+{% set gg_sans = '"KoPubWorld Dotum", "Noto Sans KR", "Malgun Gothic", sans-serif' %}
+{% set gg_serif = '"KoPubWorld Batang", "Noto Serif KR", "Batang", serif' %}
+
+.cover-wrapper {
+    page: cover;
+    page-break-after: always;
+    width: {{ page_width }}mm;
+    height: {{ page_height }}mm;
+    min-height: {{ page_height }}mm;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background-color: {{ gg_paper }} !important;
+    background-image: radial-gradient(120% 70% at 50% 25%, #f1f2ef 0%, rgba(241, 242, 239, 0) 70%);
+}
+
+/* 하단 짙은 녹색 띠 (표지 높이의 35.5%) */
+.cover-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 35.5%;
+    background-color: {{ gg_green }};
+}
+
+.book-cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: transparent;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* 상단 좌우 코너 장식 */
+.gg-corner {
+    position: absolute;
+    top: 6%;
+    width: 15%;
+    height: auto;
+}
+.gg-corner-left  { left: 10%; }
+.gg-corner-right { right: 10%; transform: scaleX(-1); }
+
+.cover-kicker {
+    position: absolute;
+    top: 9%; left: 28%; right: 28%;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (7.5 * gg_scale) }}pt;
+    font-weight: 500;
+    color: #6b7560;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* 상단 한 줄 부제 (샘플의 "1인기업 창업을 위한 핵심 가이드" 자리) */
+.book-subtitle {
+    position: absolute;
+    top: 11.6%; left: 26%; right: 26%;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (10.5 * gg_scale) }}pt;
+    font-weight: 400;
+    color: #3a4134;
+    line-height: 1.5;
+    word-break: keep-all;
+    margin: 0;
+}
+
+/* 원 위에 얹히는 굵은 숫자·기호 (샘플의 "1") */
+.gg-badge {
+    position: absolute;
+    top: calc(36.5% - {{ '%.1f' % (gg_circle / 2 + 13 * gg_scale) }}mm);
+    left: 0; right: 0;
+    z-index: 2;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (44 * gg_scale) }}pt;
+    font-weight: 900;
+    line-height: 1;
+    color: {{ gg_green }};
+    margin: 0;
+}
+
+/* 제목을 품은 짙은 녹색 원 */
+.gg-circle {
+    position: absolute;
+    top: calc(36.5% - {{ '%.1f' % (gg_circle / 2) }}mm);
+    left: 50%;
+    transform: translateX(-50%);
+    width: {{ '%.1f' % gg_circle }}mm;
+    height: {{ '%.1f' % gg_circle }}mm;
+    border-radius: 50%;
+    background-color: {{ gg_green }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 {{ '%.1f' % (gg_circle * 0.1) }}mm;
+    box-sizing: border-box;
+}
+
+.gg-circle .book-title {
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (32 * gg_scale) }}pt;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    margin: 0;
+}
+
+/* 제목 일부를 민트로: books.py title 에 <span class="accent">…</span> */
+.gg-circle .book-title .accent {
+    color: {{ gg_mint }};
+    font-size: 0.72em;
+}
+
+.book-author {
+    position: absolute;
+    top: 57.6%; right: 15%;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (11 * gg_scale) }}pt;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+/* 하단 띠 안의 소개 문구 */
+.gg-blurb {
+    position: absolute;
+    top: 67.3%; left: 10%; right: 10%;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (9.8 * gg_scale) }}pt;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.65;
+    word-break: keep-all;
+    margin: 0;
+}
+
+/* 금색 월계관 배지 (최대 3개) */
+.gg-laurels {
+    position: absolute;
+    bottom: 7%; left: 6%; right: 6%;
+    display: flex;
+    justify-content: center;
+    gap: 6%;
+}
+
+.gg-laurel {
+    width: 23%;
+    aspect-ratio: 1 / 1;
+    background: url("../images/ornaments/laurel-gold.svg") center / contain no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18% 4%;
+    box-sizing: border-box;
+    font-family: {{ gg_sans }};
+    font-size: {{ '%.1f' % (9 * gg_scale) }}pt;
+    font-weight: 800;
+    color: {{ gg_gold }};
+    line-height: 1.3;
+    word-break: keep-all;
+}
+
+.gg-publisher {
+    position: absolute;
+    bottom: 2.2%; left: 0; right: 0;
+    font-family: {{ gg_serif }};
+    font-size: {{ '%.1f' % (12 * gg_scale) }}pt;
+    font-weight: 700;
+    color: #dfe7e2;
+    letter-spacing: 0.02em;
+    margin: 0;
+}

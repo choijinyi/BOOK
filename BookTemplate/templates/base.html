@@ -22,6 +22,26 @@
             {% if cover.host %}<p class="cover-host">{{ cover.host }}</p>{% endif %}
         </div>
     </div>
+    {% elif cover.mode == 'green-gold' %}
+    {# 표지 샘플 09(짙은 녹색·금색) 구도: 코너 장식 / 부제 / 원 안 제목 / 저자 / 녹색 띠(소개문·월계관·출판사) #}
+    <div class="cover-wrapper cover-green-gold">
+        <div class="book-cover">
+            <img class="gg-corner gg-corner-left" src="../images/ornaments/corner-ornament.svg" alt="">
+            <img class="gg-corner gg-corner-right" src="../images/ornaments/corner-ornament.svg" alt="">
+            {% if cover.kicker %}<p class="cover-kicker">{{ cover.kicker }}</p>{% endif %}
+            {% if subtitle %}<p class="book-subtitle">{{ subtitle }}</p>{% endif %}
+            {% if cover.badge %}<p class="gg-badge">{{ cover.badge }}</p>{% endif %}
+            <div class="gg-circle"><h1 class="book-title">{{ title | safe }}</h1></div>
+            <p class="book-author">{{ author }}</p>
+            {% if cover.blurb %}<p class="gg-blurb">{{ cover.blurb | safe }}</p>{% endif %}
+            {% if cover.laurels %}
+            <div class="gg-laurels">
+                {% for item in cover.laurels[:3] %}<div class="gg-laurel"><span>{{ item | safe }}</span></div>{% endfor %}
+            </div>
+            {% endif %}
+            {% if cover.publisher %}<p class="gg-publisher">{{ cover.publisher }}</p>{% endif %}
+        </div>
+    </div>
     {% else %}
     <div class="cover-wrapper">
         <div class="book-cover">

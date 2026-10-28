@@ -39,7 +39,7 @@ python convert_manuscript.py <책>
 
 - [ ] `content/<책>/00_목차.md` — 없으면 변환된 장들의 간지 제목·H2로 목차 초안 생성 (형식은 기존 책 목차 참조)
 - [ ] 손유지 전면부 파일 (추천사·지은이소개·머리말) — 필요 여부를 사용자에게 확인
-- [ ] 표지 이미지 (`BookTemplate/images/`) — 없으면 `/book-illustrate <책>` 제안
+- [ ] 표지 — `books.py` cover가 비었거나 이미지가 없으면 `/book-illustrate <책> cover` 제안 (표지 샘플 `BookTemplate/images/cover-samples/`에서 시안부터 고른다. 녹색·금색 09번은 이미지 없이 `"mode": "green-gold"`로 바로 빌드 가능)
 - [ ] 본문 도판 (`images/figures/`) — 원고의 figures 참조가 실제 파일과 매칭되는지 확인
 
 완료되면: "편집 준비 완료 — `/book-build <책>`으로 빌드 가능"을 알린다.

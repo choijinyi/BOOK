@@ -9,9 +9,10 @@
 
 {# ── 책별 테마 색상 (cover.mode 로 결정) ── #}
 {# theme 우선순위: cover.theme 명시값 > (tech-navy면 navy) > classic. cover.mode(표지)와 분리해 간지/표 색을 정한다. #}
-{% set theme = cover.theme if cover.theme is defined else ('navy' if cover.mode == 'tech-navy' else 'classic') %}
+{% set theme = cover.theme if cover.theme is defined else ('navy' if cover.mode == 'tech-navy' else ('green' if cover.mode == 'green-gold' else 'classic')) %}
 {% set is_navy = (theme == 'navy') %}
 {% set is_plum = (theme == 'plum') %}
+{% set is_green = (theme == 'green') %}
 {% set chap_label_color  = '#c9a85c' if is_navy else ('#e3b89a' if is_plum else 'rgba(20, 70, 10, 0.75)') %}
 {% set chap_number_color = '#ffffff' if is_navy else ('#ffffff' if is_plum else '#1a4a0a') %}
 {% set chap_title_color  = '#ffffff' if is_navy else ('#f5ebe2' if is_plum else '#1a3a08') %}
@@ -32,6 +33,27 @@
 {% set author_kicker_c   = '#9a7d3c' if is_navy else ('#9a6f88' if is_plum else '#8a6a3a') %}
 {% set author_name_c     = '#13294f' if is_navy else ('#3a2342' if is_plum else '#1f3a2c') %}
 {% set author_divider_bg = 'linear-gradient(90deg, #a8842f, #ecd089, #a8842f)' if is_navy else ('linear-gradient(90deg, #b07a55, #e7c3a0, #b07a55)' if is_plum else '#b9a988') %}
+{# green 테마(green-gold 표지와 짝): 짙은 녹색 + 금색 — 간지·표·저자 소개 색을 덮어쓴다 #}
+{% if is_green %}
+{% set chap_label_color  = '#e2b53a' %}
+{% set chap_number_color = '#ffffff' %}
+{% set chap_title_color  = '#f3f1e6' %}
+{% set chap_verse_color  = '#c5d3c0' %}
+{% set chap_ref_color    = '#a9bba3' %}
+{% set chap_divider_bg   = 'linear-gradient(90deg, #b8860b, #f2c94c, #b8860b)' %}
+{% set chap_deco_bg      = 'rgba(242, 183, 5, 0.4)' %}
+{% set tbl_th_bg         = '#283212' %}
+{% set tbl_th_fg         = '#ffffff' %}
+{% set tbl_border        = '#cfd6c8' %}
+{% set tbl_zebra         = '#f5f7f2' %}
+{% set tbl_caption_color = '#56644c' %}
+{% set tbl_accent        = '#283212' %}
+{% set author_page_bg    = '#f1f4ee' %}
+{% set author_box_border = '#c9b46a' %}
+{% set author_kicker_c   = '#8a7426' %}
+{% set author_name_c     = '#283212' %}
+{% set author_divider_bg = 'linear-gradient(90deg, #b8860b, #f2c94c, #b8860b)' %}
+{% endif %}
 
 /* ─── 0. 내장 폰트 (@font-face) ───
    경로는 <base href=output/> 기준 상대 URL. 파일은 templates/fonts/에 커밋됨.
@@ -340,6 +362,8 @@ body.cover-page {
     text-align: center;
     margin: 0;
 }
+{% elif cover.mode == 'green-gold' %}
+{% include 'cover-green-gold.css' %}
 {% else %}
 /* === 이미지 배경 표지 (절대 위치 타이포그래피) === */
 .cover-wrapper {
@@ -678,6 +702,11 @@ body.cover-page {
     background-image:
         radial-gradient(120% 78% at 50% 0%, #5e3a5e 0%, rgba(94, 58, 94, 0) 55%),
         linear-gradient(168deg, #3c2440 0%, #281630 55%, #1c0f22 100%);
+    {% elif is_green %}
+    background-color: #1f280e;
+    background-image:
+        radial-gradient(120% 75% at 50% 0%, #3d4d22 0%, rgba(61, 77, 34, 0) 55%),
+        linear-gradient(168deg, #2e3a17 0%, #232c10 55%, #171d09 100%);
     {% else %}
     background-color: #d4e8a8;
     {% endif %}
@@ -1281,7 +1310,7 @@ body.cover-page {
     page-break-inside: avoid;
 }
 
-/* ─── 11. 표 (가독성) — 헤더색은 책 테마({{ 'navy' if is_navy else 'classic' }})에 맞춤 ─── */
+/* ─── 11. 표 (가독성) — 헤더색은 책 테마({{ theme }})에 맞춤 ─── */
 .book-content table {
     width: 100%;
     border-collapse: collapse;

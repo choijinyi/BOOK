@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="#4a4f45" stroke-width="1.4" stroke-linecap="round">
+<!-- 좌상단 코너 장식(표지 샘플 09 모티프). 우상단은 CSS scaleX(-1)로 반전 -->
+<path d="M4 116 V10 H116"/>
+<path d="M12 116 V30 Q12 18 24 18 H116"/>
+<path d="M4 28 H20 V12"/>
+<path d="M12 46 Q22 40 18 30"/>
+<path d="M44 12 q6 -7 12 0 q-6 6 -12 0z"/>
+<circle cx="66" cy="10" r="2.5"/>
+<path d="M10 70 q-7 6 0 12 q6 -6 0 -12z"/>
+<circle cx="10" cy="94" r="2.5"/>
+</svg>
